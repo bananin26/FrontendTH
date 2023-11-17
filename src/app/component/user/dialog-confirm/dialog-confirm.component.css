@@ -1,0 +1,16 @@
+.dialog-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+  }
+  
+  .mat-dialog-content {
+    flex-grow: 1;
+  }
+
+  .mat-dialog-actions{
+    margin-top: -500px;
+  }

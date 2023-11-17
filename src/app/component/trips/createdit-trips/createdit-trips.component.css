@@ -1,0 +1,84 @@
+.example-form {
+    min-width: 100;
+    max-width: 400;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 75%;
+  }
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex; /* Utiliza un diseño de caja flexible */
+  justify-content: center; /* Centra horizontalmente el contenido */
+  align-items: center; /* Centra verticalmente el contenido */
+  height: 200vh; /* Ajusta la altura del contenedor al 100% del viewport */
+  padding: 20px;
+  position: relative; /* Agregado para posicionar el icono */
+}
+
+/* Estilos para el formulario */
+.form-container {
+  padding: 100px;
+  text-align: center;
+}
+
+.body-inicio {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  width: 850px;
+  text-align: center;
+  margin-top: 500px; /* Ajusta el valor según sea necesario */
+
+}
+
+/* Estilos para el logotipo */
+.logo {
+  max-width: 150px;
+  max-height: 150px;
+  margin-top: -320px;
+  margin-right: 400px;
+  overflow: hidden;
+}
+
+img {
+  position: absolute;
+  animation: moveImage 5s linear infinite; /* 5s es la duración, puedes ajustar según tus necesidades */
+}
+
+
+@keyframes moveImage {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%); /* Cambia el 100% según el desplazamiento que desees */
+  }
+}
+
+.header {
+  text-align: center; /* Alinea el texto a la derecha */
+  margin-top: 20px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("/assets/trips.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background-image {
+  width: 300px;
+  height: 300px;
+  background-color: rgba(255, 255, 255, 0.5); /* Fondo semi-transparente si lo deseas */
+}

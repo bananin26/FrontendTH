@@ -1,0 +1,143 @@
+<router-outlet></router-outlet>
+<div [hidden]="route.children.length !== 0">
+  <app-tolist-trips></app-tolist-trips>
+</div>
+<mat-toolbar color="primary" *ngIf="verificar()">
+  <div class="toolbar-content">
+    <img
+      src="assets/logo2.png"
+      alt="Logo de la aplicación"
+      class="toolbar-image"
+      style="max-width: 250px; max-height: 250px"
+    />
+  </div>
+
+  
+  <button
+    mat-raised-button link
+      style="color: black"
+    >
+      Rol:
+      <span>{{ role }}</span>
+    </button>
+
+  <header class="header">
+    <div class="container">
+      <div class="btn-menu">
+        <label for="btn-menu">
+          <span class="material-icons">menu</span>
+        </label>
+      </div>
+      <div class="toolbar-content">
+        <a href="/components/Home">
+          <img
+            style="cursor: pointer"
+            src="assets/logo2.png"
+            alt=""
+            class="toolbar-image"
+            style="max-width: 250px; max-height: 250px"
+          />
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <input type="checkbox" id="btn-menu" />
+
+  <div class="container-menu">
+    <div class="cont-menu">
+        <div class="sidebar">
+            <div class="toolbar-content">
+                <img
+                  src="assets/logo2.png"
+                  alt="Logo de la aplicación"
+                  class="toolbar-image"
+                  style="margin-left: 92px;"
+                />
+              </div>
+              <ul>
+                <li style="margin-top: -20px;" *ngIf="validarRol()" ><a><span class="mover1"class="menu-icon material-icons">person</span>User<span class="submenu-icon material-icons">keyboard_arrow_down</span></a>
+                    <ul class="sub-menu">
+                        <li *ngIf="role == 'CUSTOMER' || role == 'TRAVELER'"><a href="/components/Users/new">Add User</a></li>
+                        <li *ngIf="role == 'ADMIN'"><a href="/components/Users">List User</a></li>
+                        <li *ngIf="role == 'ADMIN'"><a href="/components/Users/search">Search User</a></li>
+                    </ul>
+                </li>
+                <li *ngIf="role == 'CUSTOMER' || role == 'ADMIN'">
+                    <a ><span class="menu-icon material-icons">store</span>Product<span class="submenu-icon2 material-icons">keyboard_arrow_down</span></a>
+                    <ul class="sub-menu">
+                        <li *ngIf="role == 'CUSTOMER'"><a href="/components/Products/new">Add Product</a></li>
+                        <li *ngIf="role == 'ADMIN'"><a href="/components/Products">List Product</a></li>
+                        <li *ngIf="role == 'ADMIN'"><a href="/components/reports/query04">Products Greater</a></li>
+                    </ul>
+                </li>
+                <li *ngIf="role == 'ADMIN' || role == 'TRAVELER'">
+                    <a><span class="menu-icon material-icons">flight</span>Trips<span class="submenu-icon3 material-icons">keyboard_arrow_down</span></a>
+                    <ul class="sub-menu">
+                        <li *ngIf="role == 'TRAVELER'"><a href="/components/Trips/new">Add Trips</a></li>
+                        <li *ngIf="role == 'ADMIN'"><a href="/components/Trips">List Trips</a></li>
+                        <li *ngIf="role == 'ADMIN'"><a href="/components/reports/query02">Total Trips</a></li>
+                    </ul>
+                </li>
+                <li *ngIf="validarRol()">
+                    <a><span class="menu-icon material-icons">message</span>Message<span class="submenu-icon4 material-icons">keyboard_arrow_down</span></a>
+                    <ul class="sub-menu">
+                        <li><a href="/components/Messages/new">Add Message</a></li>
+                        <li><a href="/components/Messages">List Message</a></li>
+                        <li *ngIf="role == 'ADMIN'"><a href="/components/reports/query05">Quantity Receive</a></li>
+                        <li *ngIf="role == 'ADMIN'"><a href="/components/reports/query06">Quantity Send</a></li>
+                    </ul>
+                </li>
+                <li *ngIf="validarRol()">
+                    <a><span class="menu-icon material-icons">notifications</span>Notification<span class="submenu-icon5 material-icons">keyboard_arrow_down</span></a>
+                    <ul class="sub-menu">
+                        <li *ngIf="role == 'ADMIN'" ><a href="/components/Notifications/new">Add Notification</a></li>
+                        <li *ngIf="role == 'ADMIN' || role == 'TRAVELER' || role == 'CUSTOMER'"><a href="/components/Notifications">List Notification</a></li>
+                    </ul>
+                </li>
+                <li *ngIf="role == 'CUSTOMER' || role == 'ADMIN'">
+                    <a><span class="menu-icon material-icons">category</span>Category<span class="submenu-icon6 material-icons">keyboard_arrow_down</span></a>
+                    <ul class="sub-menu">
+                        <li *ngIf="role == 'CUSTOMER'"><a href="/components/Categories/new">Add Category</a></li>
+                        <li *ngIf="role == 'ADMIN'"><a href="/components/Categories">List Category</a></li>
+                    </ul>
+                </li>
+                <li *ngIf="role == 'ADMIN'">
+                    <a><span class="menu-icon material-icons">supervisor_account</span>Role<span class="submenu-icon7 material-icons">keyboard_arrow_down</span></a>
+                    <ul class="sub-menu">
+                        <li><a href="/components/Roles">List Role</a></li>
+                    </ul>
+                </li>
+                <li *ngIf="validarRol()">
+                    <a><span class="menu-icon material-icons">forum</span>Forum<span class="submenu-icon8 material-icons">keyboard_arrow_down</span></a>
+                    <ul class="sub-menu">
+                        <li><a href="/components/Forums/new">Add Forum</a></li>
+                        <li><a href="/components/Forums">List Forum</a></li>
+                    </ul>
+                </li>
+                <li *ngIf="role == 'CUSTOMER' || role == 'ADMIN'">
+                    <a><span class="menu-icon material-icons">description</span>Records<span class="submenu-icon9 material-icons">keyboard_arrow_down</span></a>
+                    <ul class="sub-menu">
+                        <li *ngIf="role == 'CUSTOMER'"><a href="/components/Records/new">Add Records</a></li>
+                        <li *ngIf="role == 'ADMIN'"><a href="/components/Records">List Records</a></li>
+                        <li *ngIf="role == 'CUSTOMER' || role == 'ADMIN'"><a href="/components/reports/queery03">Points</a></li>
+                    </ul>
+                </li>
+                <li >
+                  <a style="cursor: pointer;" routerLink="/login" (click)="cerrar()"><span class="menu-icon material-icons" style="margin-left: 24px;">exit_to_app</span>Cerrar Sesión<span class="submenu-icon9 material-icons" style="visibility: hidden;">keyboard_arrow_down</span></a>
+                </li>
+            </ul>
+
+            <div class="container">
+              <label for="btn-menu" style="margin-left: -100px;"><img
+                src="assets/menu-chevere-recontraoficial.png"
+                class="image-menu"
+    
+                alt="Logo"
+    
+                /></label>
+              </div>
+    </div>
+ </div>
+</div>
+</mat-toolbar>

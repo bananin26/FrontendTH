@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container" style="text-align: center">
+      <!-- Contenedor del logotipo -->
+      <div class="logo">
+        <img src="assets/chat.png" alt="Logo de la empresa" />
+      </div>
+      <div class="form-container">
+        <div class="container" style="text-align: center">
+          <mat-card class= "mat-card-container" style="width: 1000px; border-radius: 50px ">
+            <br />
+            <h2 class="header">Chat Message</h2>
+            <form [formGroup]="form" (submit)="accept()" class="example-form">
+              <br />
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Title</mat-label>
+                <input matInput placeholder="Title" formControlName="title" />
+                <mat-error style="font-size: 10.7px;"
+                  *ngIf="obtenerControlCampo('title')?.errors?.['required']"
+                >
+                  El título es obligatorio.
+                </mat-error>
+              </mat-form-field>
+              <br />
+              <br>  
+              <mat-form-field class="example-full-width">
+                <mat-label>Message</mat-label>
+                <textarea
+                  matInput
+                  placeholder="Ex. It makes me feel..."
+                  formControlName="content"
+                ></textarea>
+                <mat-error style="font-size: 10.7px;"
+                  *ngIf="obtenerControlCampo('content')?.errors?.['required']"
+                >
+                  El mensaje es obligatorio.
+                </mat-error>
+              </mat-form-field>
+              <br />
+              <br>
+              <mat-form-field class="example-full-width">
+                <mat-label>User Send</mat-label>
+                <mat-select
+                  [(value)]="idUserSeleccionada1"
+                  formControlName="userSend"
+                >
+                  <mat-option *ngFor="let p of listaUsers" [value]="p.idUser">
+                    {{ p.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error style="font-size: 10.7px;"
+                  *ngIf="obtenerControlCampo('userSend')?.errors?.['required']"
+                >
+                  El usuario enviado es obligatorio.
+                </mat-error>
+              </mat-form-field>
+              <br>
+              <br />
+
+              <mat-form-field class="example-full-width">
+                <mat-label>User Receive</mat-label>
+                <mat-select
+                  [(value)]="idUserSeleccionada2"
+                  formControlName="userReceive"
+                >
+                  <mat-option *ngFor="let p of listaUsers" [value]="p.idUser">
+                    {{ p.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error style="font-size: 10.7px;"
+                  *ngIf="obtenerControlCampo('userReceive')?.errors?.['required']"
+                >
+                  El usuario recibido es obligatorio.
+                </mat-error>
+              </mat-form-field>
+              <br />
+              <br />
+
+              <button
+                mat-raised-button
+                color="basic"
+                style="margin-right: 30px"
+              >
+                Enviar mensaje
+              </button>
+              <button
+                mat-raised-button
+                color="accent"
+                routerLink="/components/Home"
+              >
+                Cancelar mensaje
+              </button>
+              <br />
+              <p>{{ mensaje }}</p>
+              <br />
+            </form>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </body>
+  <body></body>
+</html>

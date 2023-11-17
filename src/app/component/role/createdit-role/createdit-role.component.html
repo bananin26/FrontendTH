@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container" style="text-align: center">
+      <br />
+      <h2>Role Register</h2>
+      <form [formGroup]="form" (submit)="accept()" class="example-form">
+        <br />
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Role</mat-label>
+          <input matInput placeholder="Role" formControlName="role" />
+          <mat-error
+            *ngIf="obtenerControlCampo('role')?.errors?.['required']"
+          >
+            El rol es obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br />
+
+          <mat-form-field class="example-full-width">
+            <mat-label>User</mat-label>
+            <mat-select 
+            [(value)]="idUserSeleccionada1"
+            formControlName="user">
+              <mat-option *ngFor="let l of listaUsers" [value]="l.idUser">
+                {{l.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error
+            *ngIf="obtenerControlCampo('user')?.errors?.['required']"
+          >
+            El usuario es obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br/>
+
+        <button mat-stroked-button color="accent" style="margin-right: 20px;">Aceptar</button>
+        <button mat-stroked-button color="warn" routerLink="/components/Roles">
+            Cancel
+          </button>
+<br/>
+        <p>{{ mensaje }}</p>
+        <br/>
+
+      </form>
+    </div>
+  </body>
+</html>

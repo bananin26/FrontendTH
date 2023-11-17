@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <div
+        class="background-image"
+        [ngStyle]="{ 'background-image': backgroundImage }"
+      >
+        <div>
+          <br />
+          <div>
+            <br />
+            <h2 style="text-align: center">Category List</h2>
+          </div>
+          <div class="container">
+            <mat-form-field>
+              <input matInput (keyup)="filter($event)" placeholder="Search" />
+            </mat-form-field>
+            <table
+              mat-table
+              [dataSource]="dataSource"
+              class="mat-elevation-z8 my-custom-table"
+            >
+              <ng-container matColumnDef="idCategory">
+                <th mat-header-cell *matHeaderCellDef>idCategory</th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.idCategory }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="nameCategory">
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.nameCategory }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="detailsCategory">
+                <th mat-header-cell *matHeaderCellDef>Details</th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.detailsCategory }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="actualizar">
+                <th mat-header-cell *matHeaderCellDef>Actualiza</th>
+                <td mat-cell *matCellDef="let element">
+                  <button
+                    mat-icon-button
+                    [routerLink]="['edition', element.idCategory]"
+                    class="mat-primary"
+                  >
+                    <mat-icon>update</mat-icon>
+                  </button>
+                </td></ng-container
+              >
+              <ng-container matColumnDef="eliminar">
+                <th mat-header-cell *matHeaderCellDef>Elimina</th>
+                <td mat-cell *matCellDef="let element">
+                  <button
+                    mat-icon-button
+                    (click)="eliminar(element.idCategory)"
+                    class="mat-accent"
+                  >
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </td></ng-container
+              >
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+            <br />
+            <br />
+            <div class="mat">
+              <mat-paginator
+                [pageSizeOptions]="[10, 50, 100]"
+                showFirstLastButtons
+                style="border-radius: 10px"
+                class="mat-paginator"
+              ></mat-paginator>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="w-100 d-flex justify-content-between">
+    <div class="background-image" [ngStyle]="{'background-image': backgroundImage}">
+    <div class="container">
+        <!-- Contenedor del logotipo -->
+        <div class="logo">
+          <a href="/Start">
+          <img style="cursor:pointer"
+          src="assets/logo.png" alt="Logo de la empresa" />
+        </a>
+        </div>
+        <!-- Contenedor del formulario -->
+        <div class="form-container">
+          <div class="body-inicio">
+          <h2 class="header">Iniciar Sesión</h2>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Usuario</mat-label>
+            <input matInput placeholder="Username" [(ngModel)]="username" />
+          </mat-form-field>
+          <br />
+          <mat-form-field class="example-full-width">
+            <mat-label class="submit-button">Password</mat-label>
+            <input
+              type="password"
+              matInput
+              placeholder="Password"
+              [(ngModel)]="password"
+            />
+          </mat-form-field>
+          <br />
+          <div class="form-group button:hover">
+            <button mat-stroked-button color="black" (click)="login()">
+              Ingresar
+            </button>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>

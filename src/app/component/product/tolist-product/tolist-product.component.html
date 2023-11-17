@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <div
+        class="background-image"
+        [ngStyle]="{ 'background-image': backgroundImage }"
+      >
+        <div>
+          <br />
+          <h2 style="text-align: center">Product List</h2>
+        </div>
+        <div class="container">
+          <mat-form-field>
+            <input matInput (keyup)="filter($event)" placeholder="Search" />
+          </mat-form-field>
+          <table
+            mat-table
+            [dataSource]="dataSource"
+            class="mat-elevation-z8 my-custom-table"
+          >
+            <ng-container matColumnDef="idProduct">
+              <th mat-header-cell *matHeaderCellDef>Id</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.idProduct }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="nameProduct">
+              <th mat-header-cell *matHeaderCellDef>Name</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.nameProduct }}
+              </td>
+            </ng-container>
+
+            <ng-container
+              matColumnDef="descriptionProduct"
+              class="mat-column-email"
+            >
+              <th mat-header-cell *matHeaderCellDef>Description</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.descriptionProduct }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="priceProduct">
+              <th mat-header-cell *matHeaderCellDef>Price</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.priceProduct }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="dimensionsProduct">
+              <th mat-header-cell *matHeaderCellDef>Dimensions</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.dimensionsProduct }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="trips">
+              <th mat-header-cell *matHeaderCellDef>Trips</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.trips.idTrips}}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="category">
+              <th mat-header-cell *matHeaderCellDef>Category</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.category.nameCategory }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="user">
+              <th mat-header-cell *matHeaderCellDef>User</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.user.name }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actualizar">
+              <th mat-header-cell *matHeaderCellDef>Actualiza</th>
+              <td mat-cell *matCellDef="let element">
+                <button
+                  mat-icon-button
+                  [routerLink]="['edition', element.idProduct]"
+                  class="mat-primary"
+                >
+                  <mat-icon>update</mat-icon>
+                </button>
+              </td></ng-container
+            >
+            <ng-container matColumnDef="eliminar">
+              <th mat-header-cell *matHeaderCellDef>Elimina</th>
+              <td mat-cell *matCellDef="let element">
+                <button
+                  mat-icon-button
+                  (click)="eliminar(element.idProduct)"
+                  class="mat-accent"
+                >
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td></ng-container
+            >
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+
+          <br />
+          <br />
+          <div class="mat">
+            <mat-paginator
+              [pageSizeOptions]="[10, 50, 100]"
+              showFirstLastButtons
+              style="border-radius: 10px"
+              class="mat-paginator"
+            ></mat-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

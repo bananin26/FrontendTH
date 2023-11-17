@@ -1,0 +1,109 @@
+.example-form {
+  min-width: 100;
+  max-width: 400;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 75%;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex; /* Utiliza un diseño de caja flexible */
+  justify-content: center; /* Centra horizontalmente el contenido */
+  align-items: center; /* Centra verticalmente el contenido */
+  height: 100vh; /* Ajusta la altura del contenedor al 100% del viewport */
+  padding: 20px;
+  position: relative; /* Agregado para posicionar el icono */
+  
+}
+
+/* Estilos para el formulario */
+.form-container {
+  padding: 100px;
+  text-align: center;
+}
+
+.body-inicio {
+  background-image: url("/assets/mensaje.png");
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0);
+  width: 850px;
+  text-align: center;
+}
+
+/* Estilos para el logotipo */
+.logo {
+  max-width: 150px;
+  max-height: 150px;
+  margin-top: -320px;
+  margin-right: 380px;
+  overflow: hidden;
+}
+
+img {
+  position: absolute;
+  animation: moveImage 5s linear infinite; /* 5s es la duración, puedes ajustar según tus necesidades */
+}
+
+
+@keyframes moveImage {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%); /* Cambia el 100% según el desplazamiento que desees */
+  }
+}
+
+.header {
+  text-align: center; /* Alinea el texto a la derecha */
+  margin-top: 15px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("/assets/mensaje.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 120vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  background-image: "/assets/mensaje.png"; /* Fondo semi-transparente si lo deseas */
+}
+.mat-error {
+  font-size: 5%; /* Ajusta el tamaño del texto según sea necesario */
+}
+.custom-error {
+  font-size: 5%; /* Ajusta el tamaño del texto según sea necesario */
+  /* Otros estilos personalizados si es necesario */
+}
+
+mat-card{
+  background-image: "/assets/mensaje.png"; /* Fondo semi-transparente si lo deseas */
+}
+
+.mat-card-container {
+  background: url('/assets/mensaje.png') center/cover no-repeat;
+  color: black; /* Ajusta el color del texto según sea necesario para que sea legible en la imagen */
+}
+
+.mat-card-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
